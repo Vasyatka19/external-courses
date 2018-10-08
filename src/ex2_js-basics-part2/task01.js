@@ -12,9 +12,3 @@ function getType(val){
     }
 }
 console.log(getType("ffh"));
-
-
-// function getType1(val){
-// return typeof(val);
-// }
-// console.log(getType1(1z));
