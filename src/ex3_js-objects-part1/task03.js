@@ -20,5 +20,5 @@ var animals = {
         age: 5, 
         status: 'hungry' } }
 
-      console.log('ff'.split()); 
+      console.log(searchProp("tiger1",animals)); 
 
