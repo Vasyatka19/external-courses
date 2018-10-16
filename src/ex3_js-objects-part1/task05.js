@@ -1,14 +1,9 @@
-function copyObjectWithRecursion(obj){
+function copyObject(obj){
     var resultObj = {};
-    for(var key in obj){
-        if(typeof obj[key] === "object"){
-            resultObj[key] = copyObjectWithRecursion(obj[key]);
-        } else{
-            resultObj[key] = obj[key];
-        }
-    }
+    Object.assign(resultObj,obj); // clonedeep
     return resultObj;
 }
+copyObject(animals);
 
 var animals = { 
     tiger: { 
@@ -20,4 +15,4 @@ var animals = {
         age: 5, 
         status: 'hungry' } }
 
-console.log(copyObjectWithRecursion(animals));
+console.log(copyObject(animals));

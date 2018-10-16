@@ -1,11 +1,14 @@
 function searchProp(str, obj){
-    for(var key in obj){
-        if(key===str){
-            return true;
-        }
-    }
-    return false;
+
+    return str in obj;
+    // for(var key in obj){
+    //     if(key===str){
+    //         return true;
+    //     }
+    // }
+    // return false;
 }
+
 
 var animals = { 
     tiger: { 
@@ -17,4 +20,5 @@ var animals = {
         age: 5, 
         status: 'hungry' } }
 
-      console.log(searchProp("tiger",animals)); 
+      console.log('ff'.split()); 
+
