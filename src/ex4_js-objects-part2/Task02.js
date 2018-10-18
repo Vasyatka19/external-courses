@@ -1,3 +1,7 @@
+/**функция, которая создает пустой объект, но без прототипа. */
 function createObject(){
-    let obj = {};
+    return Object.create(null);
 }
+
+//testing
+console.log(createObject());

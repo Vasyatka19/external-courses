@@ -1,7 +1,8 @@
+/**функция, которая удаляет первый и последний пробел с строке <br>
+ *  и возвращает строку без начального и завершающего пробела. */
 function deleteSpaces(str){
-    
-    return ' sdgdg '.trim;
+    return str.trim();
 }
 
 
-console.log(deleteSpaces(" gdgdf "));
+console.log(deleteSpaces("   пробельчики тут понаставили   "));
