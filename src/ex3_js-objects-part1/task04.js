@@ -1,11 +1,9 @@
 function addPropName(str, obj){
-    for(var key in obj){
-        if(key===str){
-            return obj;
-        }
-    }
-    obj[str] = "new";
+    if((str in obj) === false){
+        obj[str] = "new";
+    }   
     return obj;
+    
 }
 
 
@@ -19,4 +17,4 @@ var animals = {
         age: 5, 
         status: 'hungry' } }
 
-console.log(addPropName("tiger1",animals));
+console.log(addPropName("tiger",animals));

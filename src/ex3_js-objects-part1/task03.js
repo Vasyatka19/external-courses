@@ -1,14 +1,6 @@
 function searchProp(str, obj){
-
     return str in obj;
-    // for(var key in obj){
-    //     if(key===str){
-    //         return true;
-    //     }
-    // }
-    // return false;
 }
-
 
 var animals = { 
     tiger: { 
