@@ -1,35 +1,35 @@
 let calculator = {
-    add:  (a) => {
+    add:  function(a) {
         if(typeof a === 'number'){
-            calculator.result += a;
+            calculator.getResult(calculator.getResult()+a);
         }
-        return  (b) => {return calculator.add(b);}
+        return function(b) {return calculator.add(b);}
     },
-    subtract:  (a) => {
-        if(typeof a === 'number'){
-            calculator.result -= a;
-        }
-        return  (b) => {return calculator.subtract(b);}
-    },
-    divide: (a) => {
-        if(typeof a === 'number'){
-            calculator.result /= a;
-        }
-        return  (b) => {return calculator.divide(b);}
-    },
-    multiply: (a) => {
-        if(typeof a === 'number'){
-            calculator.result *= a;
-        }
-        return  (b) => {return calculator.multiply(b);}
-    },
-    getResult: () => {
-        return calculator.result;
-    },
-    reset: () => {
+    // subtract:  function(a) {
+    //     if(typeof a === 'number'){
+    //         result -= a;
+    //     }
+    //     return  function(b) {return calculator.subtract(b);}
+    // },
+    // divide: function(a) {
+    //     if(typeof a === 'number'){
+    //         result /= a;
+    //     }
+    //     return  function(b) {return calculator.divide(b);}
+    // },
+    // multiply: function(a) {
+    //     if(typeof a === 'number'){
+    //         result *= a;
+    //     }
+    //     return  function(b) {return calculator.multiply(b);}
+    // },
+    // getResult: function(a) {
+    //     var result = a;
+    //     return function() { return result};
+    // },
+    reset: function() {
         calculator.result = 0;
-    },
-    result: 0
+    }
 }
 
 calculator.add(5)(2)()(8)(12)();

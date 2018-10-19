@@ -1,3 +1,0 @@
-function createObject(){
-    let obj = {};
-}
