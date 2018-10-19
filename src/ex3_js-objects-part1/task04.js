@@ -3,7 +3,6 @@ function addPropName(str, obj){
         obj[str] = "new";
     }   
     return obj;
-    
 }
 
 
