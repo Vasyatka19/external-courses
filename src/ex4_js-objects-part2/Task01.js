@@ -1,11 +1,7 @@
 /**функция, которая принимает имя свойства и объект и ищет данное свойство <br>
  * только в прототипе переданного объекта (объект создан заранее через Object.create()). */
 function serchPropInPorototype(propName, obj){
-    var proto = obj.__proto__
-    if (proto.hasOwnProperty(propName)){
-        return "Значение свойства " + propName + " = " + proto[propName];
-    }
-    return "Свойство " + propName + " отсутсвует в прототипе данного объекта";
+    return obj.hasOwnProperty(propName) ? false : true ;
 }
 
 //create prototype
