@@ -1,29 +1,29 @@
 function calc(){
     let result = 0;
     return {
-        add:  function(a)  {
+        add:  function add(a)  {
             if(typeof a === 'number'){
                 result += a;
             }
-            return  function(b)  {return calculator.add(b);}
+            return  function(b)  {return add(b);}
         },
-        subtract:  function(a) {
+        subtract:  function subtract(a) {
             if(typeof a === 'number'){
                 result -= a;
             }
-            return  function(b) {return calculator.subtract(b);}
+            return  function(b) {return subtract(b);}
         },
-        divide: function(a)  {
+        divide: function divide(a)  {
             if(typeof a === 'number'){
                 result /= a;
             }
-            return  function(b) {return calculator.divide(b);}
+            return  function(b) {return divide(b);}
         },
-        multiply: function(a) {
+        multiply: function multiply(a) {
             if(typeof a === 'number'){
                 result *= a;
             }
-            return  function(b) {return calculator.multiply(b);}
+            return  function(b) {return multiply(b);}
         },
         getResult: function() {
             return result;
