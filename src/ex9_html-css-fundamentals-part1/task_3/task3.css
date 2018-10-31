@@ -1,0 +1,18 @@
+button{
+    border: 1px solid rgb(112, 111, 111);
+    border-radius: 10px;
+    padding: 0px;
+    /* outline-radius: 5; */
+    background-color:white;
+    font-family: fantasy;
+    color: gray;
+    box-shadow: inset 2px rgba(0,0,0,0.5);
+}
+div{
+    background-color: lightgray;
+    margin: 1px;
+    border: 1px solid rgb(112, 111, 111);
+    border-radius: 10px;
+    padding: 7px;
+
+}
