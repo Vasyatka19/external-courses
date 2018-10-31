@@ -1,18 +1,23 @@
 button{
-    border: 1px solid rgb(112, 111, 111);
-    border-radius: 10px;
-    padding: 0px;
-    /* outline-radius: 5; */
-    background-color:white;
+    border: 1.5px solid gray;
+    border-radius: 15px;
+    padding: 3px;
+    background-color:hsl(0, 1%, 83%);
     font-family: fantasy;
-    color: gray;
-    box-shadow: inset 2px rgba(0,0,0,0.5);
+    font-size: 22pt;
+    color:#a5a4a4;
+    box-shadow: inset 0 0 0px 2px #faf9f9;
 }
-div{
-    background-color: lightgray;
-    margin: 1px;
-    border: 1px solid rgb(112, 111, 111);
-    border-radius: 10px;
-    padding: 7px;
-
+.botton-div {
+    margin: 4px;
+    border: 0.5px solid #929191;
+    border-radius: 7px;
+    padding: 7px 14px 7px 14px;
+    box-shadow: 0 0 3px rgb(112, 111, 111);
+    background-image: linear-gradient(#faf9f9, rgb(204, 203, 203))
+}
+.botton-span {
+    color: gray;
+    margin: 7px;
+    font-size: 18pt;
 }
