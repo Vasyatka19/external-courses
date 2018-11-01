@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "Xarrovv";
+    src: url(12517.otf); 
+  }
 /* 1 */
 .div-color1 {
     background-color: #3399ff;
@@ -22,12 +26,13 @@
 }
 /* 5 */
 .div-color5 {
+    padding: 8px;
     background-color: #3399ff;
     border-top:#000 dotted 1mm;
     border-right: red dashed 5px;
     border-bottom:green double 3px;
     border-left: purple groove 4px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Xarrovv";
 }
 .crafty-cats {
     width: 370px;
