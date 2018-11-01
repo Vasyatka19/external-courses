@@ -1,0 +1,19 @@
+div{
+    height: 150px;
+    width: 200px;
+    position: relative;
+    left: -10px;
+    top: -10px;
+}
+.div1{
+    background: rgb(211, 243, 211);
+    position: relative;
+    left: 50px;
+    top: 50px;
+}
+.div2{
+    background: #7ec77e;
+}
+.div3{
+    background:green
+}
