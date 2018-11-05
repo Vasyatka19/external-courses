@@ -1,0 +1,13 @@
+label{
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+fieldset{
+    border: 1px solid black;
+    padding: 8px;
+    margin: 3px;
+}
+.radio, .checkbox {
+    display: inline-block;
+}
