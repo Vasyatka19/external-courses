@@ -1,19 +1,22 @@
 .menu {
     text-align: right;
     display: flex;
-    grid-area: menu;
     flex-wrap: wrap;
+    width: 40%;
+    margin: 0% 5% 0% 15%;
 }
 .logo {
-    grid-area: logo;
+    width: 20%;
+    margin: 0% 15% 0% 15%;
 }
 .contacts {
-    grid-area: contacts;
+    width: 20%;
+    margin: 0% 15% 0% 15%;
 }
 .search {
-    grid-area: search;
-    display: inline;
-    margin: 5%;
+    display: flex;
+    margin: 0% 15% 0% 5%;
+    width: 20%;
 }
 .triangle {
     display: none;
@@ -34,21 +37,34 @@
     line-height: 30px;
     padding: 0 10px;
     text-decoration: none;
+    border-top: 1px solid #cfcff0
 }
 header{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: ". logo . . . contacts ."
                          ". menu menu menu menu search search"
                          "base base base base base base base"
-                         "triangle triangle triangle triangle triangle triangle triangle";
+                         "triangle triangle triangle triangle triangle triangle triangle"; */
 }
 .base__image, .logo__image, .contacts__image, .triangle_image {
     width: 100%;
 }
+.search label {
+    width: 100%;
+    display: flex;
+}
 .search__icon {
-    width: 4%;
+    margin: 3%;
+    width: 10%;
+}
+.search__text {
+    margin: 3%;
+    width: 87%;
 }
 section {
     display: flex;
@@ -100,15 +116,16 @@ p {
 @media screen and (max-width: 999px) {
     .menu__icon, .triangle{
       display: inline-block;
+      justify-content: start;
     }
     .menu, .contacts{
         display: none;
     }
     .base {
         content: url(base_small.jpg)
-    }
+    }git 
     .logo {
         content: url(logo_small.jpg);
-        grid-column-start: 10;
+        margin-right: calc(15% - 45px)
     }
 }
