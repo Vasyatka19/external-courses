@@ -1,4 +1,4 @@
-/* label{
+label{
     display: block;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -10,23 +10,4 @@ fieldset{
 }
 .radio, .checkbox {
     display: inline-block;
-} */
-
-.menu {
-    text-align: right;
-}
-
-.menu__links-item {
-    display: inline-block;
-    color: #333333;
-    font-family: Arial;
-    font-size: 14px;
-    line-height: 30px;
-    padding: 0 10px;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.menu__links-item:hover {
-    text-decoration: underline;
 }

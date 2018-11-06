@@ -1,7 +1,114 @@
-.arrow-up {
-    width: 0; 
+.menu {
+    text-align: right;
+    display: flex;
+    grid-area: menu;
+    flex-wrap: wrap;
+}
+.logo {
+    grid-area: logo;
+}
+.contacts {
+    grid-area: contacts;
+}
+.search {
+    grid-area: search;
+    display: inline;
+    margin: 5%;
+}
+.triangle {
+    display: none;
+    /* width: 100%; 
     height: 0; 
-    border-left: 0px solid transparent;
-    border-right: 200px solid transparent;
-    border-top: 50px solid #40f529;
+    border-bottom: 60px solid transparent;
+    border-left: 1000px solid #75b3ec; */
+    grid-area: triangle;
+}
+.base {
+    grid-area: base;
+    width: 100%;
+}
+.menu__links--item {
+    color: #333333;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 30px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: ". logo . . . contacts ."
+                         ". menu menu menu menu search search"
+                         "base base base base base base base"
+                         "triangle triangle triangle triangle triangle triangle triangle";
+}
+.base__image, .logo__image, .contacts__image, .triangle_image {
+    width: 100%;
+}
+.search__icon {
+    width: 4%;
+}
+section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+p {
+    text-align: justify;
+}
+.content1 {
+    display: flex;
+    width: 30%;
+    min-width: 400px;
+    margin: 5%
+}
+.menu__icon {
+    display: none;
+    width: 45px;
+    height: 35px;
+    position: relative;
+    cursor: pointer;
+}
+.menu__icon span {
+    display: block;
+    position: absolute;
+    height: 9px;
+    width: 100%;
+    background: #75b3ec;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+.menu__icon span:nth-child(1) {
+    top: 0px;
+}
+.menu__icon span:nth-child(2), .menu__icon span:nth-child(3) {
+    top: 13px;
+}
+.menu__icon span:nth-child(4) {
+    top: 26px;
+}
+.base img{
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 999px) {
+    .menu__icon, .triangle{
+      display: inline-block;
+    }
+    .menu, .contacts{
+        display: none;
+    }
+    .base {
+        content: url(base_small.jpg)
+    }
+    .logo {
+        content: url(logo_small.jpg);
+        grid-column-start: 10;
+    }
 }
