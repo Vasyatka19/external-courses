@@ -1,0 +1,8 @@
+#table1 tr:hover{
+    background: #99cbfd;
+    border: #7586ae;
+    font-weight: bold;
+}
+#table1:hover{
+    margin-left: 10;
+}
