@@ -1,30 +1,44 @@
+.logo {
+    flex: 20%;
+    margin: 1% 15% 1% 15%;
+}
+.contacts {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 20%;
+    margin: 1% 15% 1% 15%;
+    font-size: 17pt;
+    color: gray;
+    justify-content: center;
+    position: relative;
+}
+.contacts__item {
+    padding: 0% 6% 0% 6%;
+    border-right: 1px solid gray; 
+    height: 50%;
+}
+#contacts__tooltip {
+    width: 80%;
+    text-align:center;
+    background:white;
+    height: 50%;
+    align-self: flex-start;
+    border: 1px #333333;
+    padding: 0%;
+}
 .menu {
     text-align: right;
     display: flex;
     flex-wrap: wrap;
-    width: 40%;
-    margin: 0% 5% 0% 15%;
-}
-.logo {
-    width: 20%;
-    margin: 0% 15% 0% 15%;
-}
-.contacts {
-    width: 20%;
-    margin: 0% 15% 0% 15%;
+    flex: 40%;
+    padding: 1% 5% 1% 15%;
+    border-top: 1px solid #cfcff0;
 }
 .search {
     display: flex;
-    margin: 0% 15% 0% 5%;
-    width: 20%;
-}
-.triangle {
-    display: none;
-    /* width: 100%; 
-    height: 0; 
-    border-bottom: 60px solid transparent;
-    border-left: 1000px solid #75b3ec; */
-    grid-area: triangle;
+    padding: 1% 15% 1% 5%;
+    flex: 20%;
+    border-top: 1px solid #cfcff0;
 }
 .base {
     grid-area: base;
@@ -37,22 +51,18 @@
     line-height: 30px;
     padding: 0 10px;
     text-decoration: none;
-    border-top: 1px solid #cfcff0
+    border-right: 1px solid #cfcff0
 }
 header{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    /* display: grid;
-    grid-template-columns: 15% 15% 15% 15% 15% 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: ". logo . . . contacts ."
-                         ". menu menu menu menu search search"
-                         "base base base base base base base"
-                         "triangle triangle triangle triangle triangle triangle triangle"; */
 }
-.base__image, .logo__image, .contacts__image, .triangle_image {
+.base img, .logo img, .contacts__image, .triangle_image {
     width: 100%;
+}
+.triangle, .logo__image2, .base__image2 {
+    display: none;
 }
 .search label {
     width: 100%;
@@ -82,22 +92,19 @@ p {
 }
 .menu__icon {
     display: none;
+    flex: 10%;
     width: 45px;
+    max-width: 45px;
     height: 35px;
     position: relative;
     cursor: pointer;
 }
-.menu__icon span {
-    display: block;
-    position: absolute;
-    height: 9px;
+.menu__icon div {
+    height: 15%;
+    margin: 10% 0% 10% 0%;
     width: 100%;
     background: #75b3ec;
-    border-radius: 9px;
-    opacity: 1;
-    left: 0;
-    transform: rotate(0deg);
-    transition: .25s ease-in-out;
+    clear: both;
 }
 .menu__icon span:nth-child(1) {
     top: 0px;
@@ -114,18 +121,14 @@ p {
 }
 
 @media screen and (max-width: 999px) {
-    .menu__icon, .triangle{
-      display: inline-block;
+    .menu__icon, .triangle, .base__image2, .logo__image2{
+      display: block;
       justify-content: start;
     }
-    .menu, .contacts{
+    .menu, .contacts, .base__image1, .logo__image1{
         display: none;
     }
-    .base {
-        content: url(base_small.jpg)
-    }git 
-    .logo {
-        content: url(logo_small.jpg);
-        margin-right: calc(15% - 45px)
+    .search{
+        border: none;
     }
 }
