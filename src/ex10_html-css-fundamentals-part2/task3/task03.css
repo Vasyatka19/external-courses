@@ -4,28 +4,50 @@
 }
 .contacts {
     display: flex;
-    flex-wrap: wrap;
     flex: 20%;
-    margin: 1% 15% 1% 15%;
-    font-size: 17pt;
+    margin: 0% 15% 0% 15%;
+    font-size: 130%;
     color: gray;
     justify-content: center;
-    position: relative;
+    flex-wrap: wrap;
 }
 .contacts__item {
-    padding: 0% 6% 0% 6%;
-    border-right: 1px solid gray; 
-    height: 50%;
+    padding: 0% 6% 0% 6%; 
+    width: calc();
+    text-align: center;
+    margin-bottom: 4%;
 }
-#contacts__tooltip {
-    width: 80%;
+.contacts__item ~ .contacts__item {
+    border-left: 1px solid gray;
+}
+.contacts__tooltip {
+    width: 100%;
+    margin: 0% 15% 0% 15%;
     text-align:center;
     background:white;
-    height: 50%;
-    align-self: flex-start;
-    border: 1px #333333;
-    padding: 0%;
+    color: white;
+    order: -3;
+    font-size: 13pt;
+    padding: 2%;
+    border-radius: 10px;
 }
+.contacts__item:hover ~ .contacts__tooltip{
+    color: gray;
+    background-color: #f1efef;
+}
+.contacts__item:hover .contacts__item--triangle{
+    color: gray;
+    border-top: 5px solid  #f1efef;
+}
+.contacts__item:hover {
+    color: #75b3ec;
+}
+.contacts__item--triangle {
+    width: 0; 
+    height: 0; 
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+  }
 .menu {
     text-align: right;
     display: flex;
@@ -96,28 +118,42 @@ p {
     width: 45px;
     max-width: 45px;
     height: 35px;
-    position: relative;
     cursor: pointer;
 }
-.menu__icon div {
+.menu__icon input{
+    position: absolute;
+    width: 1px;
+}
+.menu__icon--box {
     height: 15%;
     margin: 10% 0% 10% 0%;
     width: 100%;
     background: #75b3ec;
     clear: both;
 }
-.menu__icon span:nth-child(1) {
-    top: 0px;
-}
-.menu__icon span:nth-child(2), .menu__icon span:nth-child(3) {
-    top: 13px;
-}
-.menu__icon span:nth-child(4) {
-    top: 26px;
+.menu__icon input {
+    width: 0px;
 }
 .base img{
     max-width: 100%;
     height: auto;
+}
+
+.compact__menu {
+    margin: 0%;
+    display: none;
+}
+.menu__icon input:checked ~ .compact__menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 80%;
+    left: 15%;
+    background: #75b3ec;
+    color: white;
+    font-size: 17pt;
+    border: 1px solid white;
+    align-self: flex-start;
 }
 
 @media screen and (max-width: 999px) {
