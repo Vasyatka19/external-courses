@@ -1,0 +1,11 @@
+img{
+    width:300px;
+    max-height:300px;
+  }
+#main {
+    width:300px;
+    height: 300px;
+    /* -webkit-clip-path: circle(40.9% at 50% 50%); */
+    -webkit-mask-image: url(https://avatanplus.com/files/resources/small/5bc8d4ecabad7166887fbc9f.png); 
+    -webkit-mask-size:300px;
+}
