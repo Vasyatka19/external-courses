@@ -1,47 +1,112 @@
-#ball{
-	position:relative;
-	width:130px;
-	height:44px;
-	margin:auto;
+#task1__img{
+	width:50px;
+	height:50px;
+	animation: loader;
+	animation-duration:1s;
+	animation-iteration-count:infinite; /* непрерывность */
+	animation-timing-function:linear; 
 }
-
-.ball{
+#task2{
+	display: flex;
+}
+#task2__ball{
+	position:relative;
+	width:150px;
+	height:50px;
+}
+.task2__ball{
 	background-color:darkcyan;
 	position:absolute;
-	width:44px;
-	height:44px;
-	border-radius:22px;
-	animation-name:bounce_escapingBallG;
+	width:50px;
+	height:50px;
+	border-radius:25px;
+	animation-name:ball;
 	animation-duration:1s;
-	animation-iteration-count:infinite;
-	animation-timing-function:linear;
-	animation-delay:0s;
-	transform:scale(0.5, 1);
+	animation-iteration-count:infinite; /* непрерывность */
+	animation-timing-function:linear; 
+	/* animation-delay:0s; */
+	/* transform:scale(0.5, 1); */
 }
-
-@keyframes bounce_escapingBallG{
+#task2__block1{
+	width:50px;
+	height:50px;
+	background-color: brown;
+}
+#task2__block2{
+	width:50px;
+	height:50px;
+	background-color: brown;
+	left: 150px;
+}
+#task3__block{
+	width:50px;
+	height:50px;
+	border-radius: 50px;
+	animation: change_block;
+	animation-duration:10s;
+	animation-iteration-count:infinite; /* непрерывность */
+	/* animation-timing-function:linear;  */
+	background-image: linear-gradient(yellow, #5d943d);
+}
+@keyframes ball{
 	0%{
 		left:0px;
-		transform:scale(0.5, 1);
 	}
-
-	25%{
-		left:42px;
-		transform:scale(1, 0.5);
-	}
-
 	50%{
-		left:106px;
-		transform:scale(0.5, 1);
+		left:100px;
 	}
-
-	75%{
-		left:42px;
-		transform:scale(1, 0.5);
-	}
-
 	100%{
 		left:0px;
-		transform:scale(0.5, 1);
+	}
+}
+@keyframes loader{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+@keyframes change_block{
+	0%{
+		border-radius: 50px;
+	}
+	12.5%{
+		border-radius: 0px;
+	}
+	25%{
+		border-radius: 0px;
+		background-image: radial-gradient(red,blue);
+	}
+	37.5%{
+		width: 60px;
+		height: 60px;
+		border-radius: 0px;
+		background-image: radial-gradient(red,blue);
+		-webkit-mask-image: url(https://avatanplus.com/files/resources/small/5bc8d4ecabad7166887fbc9f.png);
+		-webkit-mask-size:60px;
+	}
+	50%{
+		width: 60px;
+		height: 60px;
+		border-radius: 0px;
+		background-image: radial-gradient(red,blue);
+		-webkit-mask-image: url(https://avatanplus.com/files/resources/small/5bc8d4ecabad7166887fbc9f.png);
+		-webkit-mask-size:60px;
+		transform: rotate(360deg);
+	}
+	62.5%{
+		width: 80px;
+		height: 80px;
+		background-image: linear-gradient(white,purple)
+	}
+	75%{
+		width: 100px;
+		height: 100px;
+		border-radius: 100px;
+		background-image: linear-gradient(white,purple)
+	}
+	100%{
+		border-radius: 50px;
 	}
 }
