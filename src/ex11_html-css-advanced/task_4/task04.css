@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    background-color: darkblue;
+    color: white;
+    justify-content: flex-end;
+    align-content: center;
+    padding: 0.5% 1% 0.5% 1%;
+}
+header > div{
+    display:table-cell;
+    vertical-align: middle;
+    padding: 0.5% 1% 0.5% 1%;
+    min-width: 7%;
+    top: 50%;
+    align-content: center;
+}
+#profile{
+    display: flex;
+    min-width: 12%;
+    justify-content: space-around;
+}
+#photo{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 0% 2% 0% 5%;
+}
