@@ -5,34 +5,46 @@ function Hangman(word){
     let maxErrorCount = 6;
     
     this.guess = function (letter){
-        if (secretWord.includes(letter)){
-            luckyLatters.push(letter);
-            if(luckyLatters.length>=maxErrorCount.length){
-                return this.getGuessedString() +" \| + YOU WON!!!!!";
-            }
-            return this.getGuessedString();
+        if(typeof letter !== 'string' || letter.length !== 1 || errorLatters.length>=maxErrorCount){
+            console.log("Некорректно введены данные или игра окончена!");
         }else{
-            errorLatters.push(letter);
-            if(errorLatters.length>=maxErrorCount.length){
-                return "GAME OVER!!!!!"
+            if (secretWord.includes(letter)){
+                luckyLatters.push(letter);
+                let result = secretWord.replace(new RegExp('[^' + luckyLatters + ']', 'gi'), "_");
+                if(!result.includes("_")){
+                    result += " \| YOU WON!!!!!";
+                    console.log(result);
+                    return this;
+                }
+                console.log(result);
+            }else{
+                if(errorLatters.length>=maxErrorCount){
+                    console.log("GAME OVER!!!!!");
+                }else{
+                    errorLatters.push(letter);
+                    console.log("wrong letter, errors left " + (maxErrorCount - errorLatters.length) + " \| " + errorLatters);
+                }
             }
-            return "wrong letter, errors left " + this.getErrorsLeft() + " \| " + this.getWrongSymbols();
         }
+         return this;
     }
     this.getGuessedString = function(){
-        var re = new RegExp('[^' + luckyLatters + ']', 'gi');
-        return secretWord.replace(re, "_");
+        console.log(secretWord.replace(new RegExp('[^' + luckyLatters + ']', 'gi'), "_"));
+        return this;
     }
     this.getErrorsLeft = function(){
-        return maxErrorCount - errorLatters.length;
+        console.log(maxErrorCount - errorLatters.length + "");
+        return this;
     }
     this.getWrongSymbols = function(){
-        return errorLatters;
+        console.log(errorLatters + "");
+        return this;
     }
     this.startAgain = function(newWord){
         luckyLatters = [];
         secretWord = newWord;
         errorLatters = [];
+        return this;
     }
 }
 var hangman = new Hangman('webpurple');
@@ -42,23 +54,17 @@ hangman.guess('e'); // "we______e"
 hangman.guess('a'); // "wrong letter, errors left 5 | a"
 hangman.guess('p'); // "we_p__p_e"
 hangman.guess('k'); // "wrong letter, errors left 4 | a,k"
+
 hangman.getGuessedString(); // we_p__p_e
 hangman.getErrorsLeft(); // 4
 hangman.getWrongSymbols(); // [a,k]
 
-// hangman.startAgain('craftycat')
-// hangman.guess('w'); // "w________"
-// hangman.guess('e'); // "we______e"
-// hangman.guess('a'); // "wrong letter, errors left 5 | a"
-// hangman.guess('p'); // "we_p__p_e"
-// hangman.guess('k'); // "wrong letter, errors left 4 | a,k"
+hangman.guess('b') // "webp___p_e"
+  .guess('l') // "webp__ple"
+  .getErrorsLeft() // 4
+  .getWrongSymbols() // [a,k]
+  .guess('u') // "webpu_ple"
+  .guess('r'); // "webpurple | You won!"
 
-//   .guess(w) // "w________"
-//   .getStatus(); // "w_______ | errors left 6"
-
-// hangman.guess('b') // "webp___p_e"
-//   .guess('l') // "webp__ple"
-//   .getErrorsLeft() // 4
-//   .getWrongSymbols() // [a,k]
-//   .guess('u') // "webpu_ple"
-//   .guess('r'); // "webpurple | You won!"
+  hangman.startAgain('craftyCat')
+  .guess('c') // "w________"
