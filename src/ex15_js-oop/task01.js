@@ -5,24 +5,26 @@ function Shape (type){
         console.log(this.type)
     }
     Shape.prototype.getPerimeter = function(){
-
-        
+        console.log("Периметр = 0 ")
     }
     Shape.prototype.draw = function(){
-        console.log("name is drawn");
+        console.log(this.type + " is drawn");
     }
 
 function Triangle(a,b,c){
-    Shape.call(this,arguments);
+    Shape.call(this,"Triangle");
     this.a = a;
     this.b = b;
     this.c = c;
 }
 Triangle.prototype = Object.create(Shape.prototype);
 Triangle.prototype.constructor = Triangle;
+Triangle.prototype.getPerimeter = function(){
+    console.log("Периметр = " + (this.a + this.b + this.c));
+}
 
 function Square(a,b,c,d){
-    Shape.call(this,arguments)
+    Shape.call(this,type)
     this.a = a;
     this.b = b;
     this.c = c;
@@ -30,7 +32,11 @@ function Square(a,b,c,d){
 }
 Square.prototype =  Object.create(Shape.prototype);
 Square.prototype.constructor = Square;
+Square.prototype.getPerimeter = function(){
+    console.log("Периметр = " + (this.a + this.b + this.c + this.d))
+}
 
 //function littleTriangle()
 var triangle = new Triangle(2,2,2);
 triangle.getPerimeter();
+triangle.draw();
