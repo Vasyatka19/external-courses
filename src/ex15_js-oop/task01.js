@@ -1,57 +1,61 @@
-function Shape (type){
+function Present(){
+    this.candyArr = [];
+}
+Present.prototype.addCandy = function(candy){
+    this.candyArr.push(candy)
+    return this;
+}
+Present.prototype.getWeight = function(){
+    return this.candyArr.reduce(function(acc,elem){
+        return acc +=elem.weight;
+    },0)
+}
+Present.prototype.comparator = function(param){    
+    for(let i = 0;i<this.candyArr.length;i++){
+        for(let j = 0;j<this.candyArr.length-1;j++){
+            if(this.candyArr[j][param]>=this.candyArr[j+1][param]){
+                var max = this.candyArr[j];
+                this.candyArr[j] = this.candyArr[j+1];
+                this.candyArr[j+1] = max;
+            }
+        }
+    }
+    return this;
+}
+Present.prototype.searchForName = function(name){
+   return this.candyArr.filter(function(elem){
+        return elem.name === name;
+    });
+}
+
+
+function Candy(type,name,weight){
     this.type = type;
+    this.name = name;
+    this.weight = weight;
 }
-    Shape.prototype.getType = function(){
-        console.log("Тип фигуры = " + this.type)
-    }
-    Shape.prototype.getPerimeter = function(){
-        console.log("Периметр = 0 ")
-    }
-    Shape.prototype.draw = function(){
-        console.log(this.type + " is drawn");
-    }
+function ChocolateCandy(name,weight){
+    this.name = name;
+    Candy.call(this,'Chocolate',name,weight)
+}
+ChocolateCandy.prototype = Object.create(Candy.prototype);
+ChocolateCandy.prototype.constructor = ChocolateCandy;
+function CaramelCandy(name,weight){
+    this.name = name;
+    Candy.call(this,'Caramel',name,weight)
+}
+CaramelCandy.prototype = Object.create(Candy.prototype);
+CaramelCandy.prototype.constructor = CaramelCandy;
 
-function Triangle(a,b,c){
-    Shape.call(this,"Triangle");
-    this.a = a;
-    this.b = b;
-    this.c = c;
-}
-Triangle.prototype = Object.create(Shape.prototype);
-Triangle.prototype.constructor = Triangle;
-Triangle.prototype.getPerimeter = function(){
-    console.log("Периметр = " + (this.a + this.b + this.c));
-}
+present = new Present();
+present.addCandy(new ChocolateCandy("Мишка на севере",25));
+present.addCandy(new ChocolateCandy("Умка",15));
+present.addCandy(new ChocolateCandy("Сникерс",30));
 
-function Square(a,b,c,d){
-    Shape.call(this,"Square")
-    this.a = a;
-    this.b = b;
-    this.c = c;
-    this.d = d;
-}
-Square.prototype =  Object.create(Shape.prototype);
-Square.prototype.constructor = Square;
-Square.prototype.getPerimeter = function(){
-    console.log("Периметр = " + (this.a + this.b + this.c + this.d))
-}
+present.addCandy(new CaramelCandy("Барбариска",17));
+present.addCandy(new CaramelCandy("Дюшес",24));
+present.addCandy(new CaramelCandy("Шок",48));
 
-function RightTriangle(a){
-    Triangle.call(this,a,a,a);
-}
-RightTriangle.prototype = Object.create(Triangle.prototype);
-RightTriangle.prototype.constructor = RightTriangle;
-
-
-var triangle = new Triangle(2,5,4);
-var square = new Square(2,4,5,8);
-var rightTriangle = new RightTriangle(2);
-triangle.getType();
-triangle.getPerimeter();
-triangle.draw();
-square.getType();
-square.getPerimeter();
-square.draw();
-rightTriangle.getType();
-rightTriangle.getPerimeter();
-rightTriangle.draw();
+console.log(present.getWeight());
+console.log(present.comparator('weight').candyArr);
+console.log(present.searchForName('Умка'));
