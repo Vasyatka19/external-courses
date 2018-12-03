@@ -1,70 +1,61 @@
-function calc(){
-    let result = 0;
-    return {
-        add:  function add(a)  {
+function Calculator(){
+        this.result = 0;
+        this.add =  function(a)  {
             if(typeof a === 'number'){
-                result += a;
+                this.result += a;
             }
-            return add;
-        },
-        subtract:  function subtract(a) {
-            if(typeof a === 'number'){
-                result -= a;
-            }
-            return  subtract;
-        },
-        divide: function divide(a)  {
-            if(typeof a === 'number'){
-                result /= a;
-            }
-            return  divide;
-        },
-        multiply: function multiply(a) {
-            if(typeof a === 'number'){
-                result *= a;
-            }
-            return  multiply;
-        },
-        setState: function setState(a){
-            if(typeof a ==='number'){
-                result = a;
-            }
-            return setState;
-        },
-        fetchData: function fetchData(callBack){
-            callBack.call(this);
-        },
-        getResult: function() {
-            return result;
-        },
-        reset: function() {
-            result = 0;
+            return this;
         }
-    }
+        this.subtract =  function(a) {
+            if(typeof a === 'number'){
+                this.result -= a;
+            }
+            return  this;
+        }
+        this.divide = function(a)  {
+            if(typeof a === 'number'){
+                this.result /= a;
+            }
+            return  this;
+        }
+        this.multiply = function(a) {
+            if(typeof a === 'number'){
+                this.result *= a;
+            }
+            return  this;
+        }
+        this.setState = function(a){
+            if(typeof a ==='number'){
+                this.result = a;
+            }
+            return this;
+        }
+        this.fetchData = function(callBack){
+            setTimeout(callBack.bind(this),2000);
+        }
+        this.getResult = function() {
+            return this.result;
+        }
+        this.reset = function() {
+            this.result = 0;
+            return this;
+        }
+
 }
 
-let calculator = calc();
+var Calculator = new Calculator();
 
-calculator.add(5)(2)()(8)(12)();
-console.log(calculator.getResult());
+const result = Calculator.add(100)
+.multiply(2)
+.divide(20)
+.reset()
+.subtract(1)
+.getResult();
 
-calculator.reset();
-console.log(calculator.getResult());
+console.log(result); // -1
 
-calculator.add(5)(2)()(8)(12)();
-console.log(calculator.getResult());
+Calculator.setState(1);
 
-calculator.subtract(5)(2)()(8)(2)();
-console.log(calculator.getResult());
+console.log(Calculator.getResult()); // 1
 
-calculator.divide(2)(2)();
-console.log(calculator.getResult());
-
-calculator.multiply(4)(2)();
-console.log(calculator.getResult());
-
-calculator.setState(5000);
-console.log(calculator.getResult());
-
-calculator.fetchData(function(){this.setState(500);});
-console.log(calculator.getResult());
+Calculator.fetchData(function(){this.setState(500);});
