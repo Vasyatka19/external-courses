@@ -119,9 +119,9 @@ header > div{
     padding: 1px 10px 1px 10px;
     border-radius: 20px;
 }
-.films__menu--item:first-child{
+.films__menu--item:hover{
+    border: 1px solid #96b2cd;
     background-color: #96b2cd;
-    color: white;
 }
 .films__menu--search{
     justify-self: flex-end;
@@ -149,14 +149,14 @@ header > div{
 .films__list--item :nth-child(1){
     display: block;
     width: 100%;
-    height: 80%;
+    height: 65%;
 }
 .films__list--item :nth-child(2){
     font-size: 14pt;
     font-weight: bold;
 }
 .films__list--item :nth-child(3){
-    font-size: 12pt;
+    font-size: 12pt;git 
 }
 .films__list--item > img:hover{
     border: 1.5px solid gray;
