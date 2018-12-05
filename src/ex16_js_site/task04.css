@@ -158,6 +158,9 @@ header > div{
 .films__list--item :nth-child(3){
     font-size: 12pt;
 }
+.films__list--item > img:hover{
+    border: 1.5px solid gray;
+}
 .films__list--star{
     font-size: 18pt;
     color: orange; 
