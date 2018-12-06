@@ -10,10 +10,10 @@ Present.prototype.getWeight = function(){
         return acc +=elem.weight;
     },0)
 }
-Present.prototype.comparator = function(param){    
+Present.prototype.sortByWeight = function(){
     for(let i = 0;i<this.candyArr.length;i++){
         for(let j = 0;j<this.candyArr.length-1;j++){
-            if(this.candyArr[j][param]>=this.candyArr[j+1][param]){
+            if(this.candyArr[j].weight>=this.candyArr[j+1].weight){
                 var max = this.candyArr[j];
                 this.candyArr[j] = this.candyArr[j+1];
                 this.candyArr[j+1] = max;
@@ -22,6 +22,7 @@ Present.prototype.comparator = function(param){
     }
     return this;
 }
+
 Present.prototype.searchForName = function(name){
    return this.candyArr.filter(function(elem){
         return elem.name === name;
@@ -57,5 +58,5 @@ present.addCandy(new CaramelCandy("Дюшес",24));
 present.addCandy(new CaramelCandy("Шок",48));
 
 console.log(present.getWeight());
-console.log(present.comparator('weight').candyArr);
+console.log(present.sortByWeight().candyArr);
 console.log(present.searchForName('Умка'));

@@ -2,10 +2,10 @@ function Shape (type){
     this.type = type;
 }
     Shape.prototype.getType = function(){
-        console.log("Тип фигуры = " + this.type)
+       return "Тип фигуры = " + this.type;
     }
     Shape.prototype.getPerimeter = function(){
-        console.log("Периметр = 0 ")
+        return "Периметр = 0 ";
     }
     Shape.prototype.draw = function(){
         console.log(this.type + " is drawn");
@@ -20,7 +20,7 @@ function Triangle(a,b,c){
 Triangle.prototype = Object.create(Shape.prototype);
 Triangle.prototype.constructor = Triangle;
 Triangle.prototype.getPerimeter = function(){
-    console.log("Периметр = " + (this.a + this.b + this.c));
+    return "Периметр = " + (this.a + this.b + this.c);
 }
 
 function Square(a,b,c,d){
@@ -33,7 +33,7 @@ function Square(a,b,c,d){
 Square.prototype =  Object.create(Shape.prototype);
 Square.prototype.constructor = Square;
 Square.prototype.getPerimeter = function(){
-    console.log("Периметр = " + (this.a + this.b + this.c + this.d))
+    return "Периметр = " + (this.a + this.b + this.c + this.d);
 }
 
 function RightTriangle(a){
@@ -46,12 +46,12 @@ RightTriangle.prototype.constructor = RightTriangle;
 var triangle = new Triangle(2,5,4);
 var square = new Square(2,4,5,8);
 var rightTriangle = new RightTriangle(2);
-triangle.getType();
-triangle.getPerimeter();
+console.log(triangle.getType());
+console.log(triangle.getPerimeter());
 triangle.draw();
-square.getType();
-square.getPerimeter();
+console.log(square.getType());
+console.log(square.getPerimeter());
 square.draw();
-rightTriangle.getType();
-rightTriangle.getPerimeter();
+console.log(rightTriangle.getType());
+console.log(rightTriangle.getPerimeter());
 rightTriangle.draw();

@@ -2,32 +2,35 @@ function Calc(){
     this.result = 0;
 }
 
+Calc.prototype.valueCheck = function(a){
+    return typeof a === 'number';
+}
 Calc.prototype.add = function(a)  {
-    if(typeof a === 'number'){
+    if(this.valueCheck(a)){
         this.result += a;
     }
     return this;
 }
 Calc.prototype.subtract = function(a) {
-    if(typeof a === 'number'){
+    if(this.valueCheck(a)){
         this.result -= a;
     }
     return  this;
 }
 Calc.prototype.divide = function(a)  {
-    if(typeof a === 'number'){
+    if(this.valueCheck(a)){
         this.result /= a;
     }
     return  this;
 }
 Calc.prototype.multiply = function(a) {
-    if(typeof a === 'number'){
+    if(this.valueCheck(a)){
         this.result *= a;
     }
     return  this;
 }
 Calc.prototype.setState = function (a){
-    if(typeof a ==='number'){
+    if(this.valueCheck(a)){
         this.result = a;
     }
     return this;
