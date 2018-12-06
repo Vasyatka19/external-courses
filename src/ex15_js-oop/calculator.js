@@ -3,7 +3,7 @@ function Calc(){
 }
 
 Calc.prototype.valueCheck = function(a){
-    return typeof a === 'number';
+    return (typeof a === 'number' || a === 'NaN');
 }
 Calc.prototype.add = function(a)  {
     if(this.valueCheck(a)){
@@ -74,7 +74,7 @@ pocketCalc.putInPocket();
 let tableCalc = new TableCalc();
 tableCalc.add(100)
         .multiply(2)
-        .divide(20)
+        .divide(0)
         .reset()
         .subtract(1)
 console.log(tableCalc.getResult())
