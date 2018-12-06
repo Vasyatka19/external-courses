@@ -36,7 +36,7 @@ header > div{
 }
 #menu{
     width: 20%;
-    /* min-width: 100px; */
+    /* min-width: 100px;  */
     font-family: Arial, Helvetica, sans-serif, SymbolaRegular;
     font-size: 14pt;
     color: white;
@@ -163,8 +163,16 @@ header > div{
     border: 1.5px solid gray;
 }
 .films__list--star{
-    font-size: 18pt;
-    color: orange; 
+    display: flex;
+    justify-content: space-between;
+    color: orange;
+    font-size: 17pt;
+}
+.films__list--star > div{
+    margin: 0%;
+    padding: 0%;
+    font-size: 100%;
+     
 }
 footer > div{
     padding: 4px 6px 4px 6px;

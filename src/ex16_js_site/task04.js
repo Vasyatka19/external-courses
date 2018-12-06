@@ -1,10 +1,12 @@
 function Book(bookName,bookAuthor,bookRating,bookImage,bookPrice,bookBuyCount){
+    let count;
     this.bookName = bookName;
     this.bookAuthor = bookAuthor;
     this.bookRating = bookRating;
     this.bookImage = bookImage;
     this.bookBuyCount = bookBuyCount;
     this.bookPrice = bookPrice;
+    this.bookID = count + 1;
 }
 Book.prototype.getElement = function(){
     var div = document.createElement('div');
@@ -12,8 +14,20 @@ Book.prototype.getElement = function(){
     div.innerHTML = '<img src="' + this.bookImage + '" alt="1">\
         <div>' + this.bookName + '</div>\
         <div>' + this.bookAuthor + '</div>\
-        <div class="films__list--star">★★★★★</div>'
+        <div class="films__list--star">' + getStars(this.bookRating,this.bookID) + '</div>'
     return div;
+
+    function getStars(count,id){
+        let result = '';
+        for(let i = 1; i<=5;i++){
+            if(i <= count){
+                result += '<div id="' + id + "__" + i + '">★</div>';
+            } else{
+                result += '<div id="' + id + "__" + i + '">☆</div>';
+            }
+        }
+        return result;
+    }
 }
 
 
@@ -102,10 +116,20 @@ window.onload = function() {
         form.elements["author"].value,
         0,
         form.elements["image"].value,
-        form.elements["price"].value,
+        parseInt(form.elements["price"].value),
         0
      )
+     let history = document.getElementById('menu__item--history');
+     let historyItem = document.createElement('div');
+     historyItem.innerHTML = '<div>🕘</div>\
+                                    <div>\
+                                        You added <span>' + form.elements["name"].value + '</span>by <span>'
+                                         + form.elements["author"].value + '</span> to your Must Read Titles\
+                                        <div>24 minutes ago</div>\
+                                    </div>'
+     history.insertBefore(historyItem,history.firstChild);
      form.style.display = 'none';
      form.reset();
+     console.log(BOOKSCREEN.bookList)
      BOOKSCREEN.bookShow();
  }
