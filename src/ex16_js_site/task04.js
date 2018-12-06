@@ -30,11 +30,9 @@ function BookScreen(){
                     new Book('Cakes and Bakes','Sanjeev Kapoor',5,'sources/book-cover10.jpg',0,40)];
     this.bookList = this.allBooksList;
 }
-BookScreen.prototype.addBook = function(bookName,bookAuthor,bookRating,bookImage){
-    allBooksList.push(new Book(bookName,bookAuthor,bookRating,bookImage));
-}
-BookScreen.prototype.getBookList = function(){
-    return this.bookList;
+BookScreen.prototype.addBook = function(bookName,bookAuthor,bookRating,bookImage,bookPrice,bookBuyCount){
+    this.allBooksList.push(new Book(bookName,bookAuthor,bookRating,bookImage,bookPrice,bookBuyCount));
+    this.bookList = this.allBooksList;
 }
 BookScreen.prototype.filterBookList = function(paramName,criterial){
     this.bookList = this.allBooksList.filter(function(el){
@@ -62,13 +60,19 @@ const BOOKSCREEN = new BookScreen();
 
 window.onload = function() {
      BOOKSCREEN.bookShow();
-
     let filters = document.getElementsByClassName('films__menu--item');
     for(let i = 0; i<filters.length; i++){
         filters[i].addEventListener('click',addFilter.bind(null,filters[i]));
     }
     let search = document.forms['bookName'];
     search.addEventListener('click',addSearch.bind(null,search));
+
+    let addBookButton = document.getElementsByClassName('menu__button--add')[0];
+    addBookButton.addEventListener('click',addBookFormVisible);
+
+    let addBookForm = document.forms['book__add'];
+    let add = addBookForm.elements["add"];
+    add.addEventListener('click',addBookInList.bind(null,addBookForm))
  };
 
  function addFilter(el){
@@ -86,4 +90,22 @@ window.onload = function() {
         BOOKSCREEN.filterBookList('bookName',criterial);
         BOOKSCREEN.bookShow();
     }
+ }
+ function addBookFormVisible(){
+    document.getElementById('book__add').style.display = "block";
+
+ }
+ function addBookInList(form){
+     
+     BOOKSCREEN.addBook(
+        form.elements["name"].value,
+        form.elements["author"].value,
+        0,
+        form.elements["image"].value,
+        form.elements["price"].value,
+        0
+     )
+     form.style.display = 'none';
+     form.reset();
+     BOOKSCREEN.bookShow();
  }

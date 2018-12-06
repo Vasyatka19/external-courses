@@ -138,6 +138,7 @@ header > div{
     justify-content: space-between;
 }
 .films__list--item{
+    min-width: 120px;
     width: 17%;
     display: flex;
     flex-direction: column;
@@ -156,7 +157,7 @@ header > div{
     font-weight: bold;
 }
 .films__list--item :nth-child(3){
-    font-size: 12pt;git 
+    font-size: 12pt;
 }
 .films__list--item > img:hover{
     border: 1.5px solid gray;
@@ -183,4 +184,36 @@ footer > :last-child{
     background-color: white;
     color: #1e2536;
     font-weight: bold;
+}
+#book__add{
+    display: none;
+    position: fixed;
+    left: 21%;
+    top:10%;
+    background-color: #edf0f6;
+    padding: 3%;
+    border: 1px solid #2f364a;
+    border-radius: 10px;
+    color: #2f364a;
+}
+#book__add > label{
+    display: block;
+    margin: 5%;
+}
+#book__add > input{
+    position: relative;
+    margin: 2% 5%;
+    padding: 2% 5%;
+    left:35%;
+    font-weight: bold;
+    font-size: 11pt;
+    border: #1e2536 solid 1px;
+    border-radius: 10px;
+    background-color: #2f364a;
+    color: white;
+}
+#book__add > div{
+    position: absolute;
+    top: 2%;
+    right: 2%;
 }
