@@ -3,12 +3,12 @@ function Calc(){
 }
 
 Calc.prototype.valueCheck = function(a){
-    return (typeof a === 'number' || a === 'NaN');
+    return (typeof a === 'number' && !isNaN(a));
 }
 Calc.prototype.add = function(a)  {
     if(this.valueCheck(a)){
         this.result += a;
-    }
+    
     return this;
 }
 Calc.prototype.subtract = function(a) {
@@ -63,7 +63,7 @@ TableCalc.prototype.putInTableBox = function(){
 }
  
 let pocketCalc = new PocketCalc();
-pocketCalc.add(100)
+pocketCalc.add(NaN)
         .multiply(2)
         .divide(20)
         .reset()
