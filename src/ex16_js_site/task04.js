@@ -1,12 +1,16 @@
 function Book(bookName,bookAuthor,bookRating,bookImage,bookPrice,bookBuyCount){
-    let count;
     this.bookName = bookName;
     this.bookAuthor = bookAuthor;
     this.bookRating = bookRating;
     this.bookImage = bookImage;
     this.bookBuyCount = bookBuyCount;
     this.bookPrice = bookPrice;
-    this.bookID = count + 1;
+    this.bookID = Book.count + 1;
+    Book.count += 1;
+}
+Book.count = 0;
+Book.prototype.setRating = function(rating){
+    this.bookRating = rating;
 }
 Book.prototype.getElement = function(){
     var div = document.createElement('div');
@@ -67,27 +71,48 @@ BookScreen.prototype.bookShow = function(){
     for(let i =0;i<this.bookList.length;i++){
         filmTag.appendChild(this.bookList[i].getElement());
     } 
+    updateEventListeners();
 }
 
 
 const BOOKSCREEN = new BookScreen();  
 
 window.onload = function() {
-     BOOKSCREEN.bookShow();
+    BOOKSCREEN.bookShow();
+ };
+
+
+
+
+ function updateEventListeners(){
+
     let filters = document.getElementsByClassName('films__menu--item');
     for(let i = 0; i<filters.length; i++){
+  //      filters[i].removeEventListener('click',addFilter.bind(null,filters[i]));
         filters[i].addEventListener('click',addFilter.bind(null,filters[i]));
     }
     let search = document.forms['bookName'];
+ //   search.removeEventListener('click',addSearch.bind(null,search));
     search.addEventListener('click',addSearch.bind(null,search));
 
     let addBookButton = document.getElementsByClassName('menu__button--add')[0];
+ //   addBookButton.removeEventListener('click',addBookFormVisible);
     addBookButton.addEventListener('click',addBookFormVisible);
 
     let addBookForm = document.forms['book__add'];
     let add = addBookForm.elements["add"];
-    add.addEventListener('click',addBookInList.bind(null,addBookForm))
- };
+  //  add.removeEventListener('click',addBookInList.bind(null,addBookForm));
+    add.addEventListener('click',addBookInList.bind(null,addBookForm));
+
+    let allStarsList = document.getElementsByClassName('films__list--star');
+    for(let j = 0; j<allStarsList.length;j++){
+        let stars = allStarsList[j].childNodes;
+        for(let i = 0;i<stars.length;i++){
+           // stars[i].removeEventListener('click',addBookRating.bind(null,stars[i]))
+            stars[i].addEventListener('click',addBookRating.bind(null,stars[i]))
+        }
+    }
+ }
 
  function addFilter(el){
     let filters = document.getElementsByClassName('films__menu--item');
@@ -130,6 +155,14 @@ window.onload = function() {
      history.insertBefore(historyItem,history.firstChild);
      form.style.display = 'none';
      form.reset();
-     console.log(BOOKSCREEN.bookList)
+     BOOKSCREEN.bookShow();
+ }
+ function addBookRating(el){
+     let id = el.getAttribute('id');
+     let bookID = parseInt(id.substring(0,id.indexOf("__")));
+     let rating = parseInt(id.substring(id.indexOf("__")+2,id.length));
+     BOOKSCREEN.allBooksList.filter(function(elem){
+         return elem.bookID === bookID;
+     })[0].setRating(rating)
      BOOKSCREEN.bookShow();
  }
