@@ -1,0 +1,21 @@
+@import url("task02-2.css");
+#table1{
+    margin: 15px;
+}
+#table1__header{
+    text-transform: uppercase;
+    text-align: center;
+}
+.table__row--odd{
+    background: #e3eaf3;
+}
+.table__row--even{
+    background: #f2f6fa;
+}
+.table__column--first{
+    text-transform: capitalize;
+}
+#table1 td,th{
+    color: #7586ae;
+    padding: 15px;
+}
