@@ -51,6 +51,7 @@ header > div{
 }
 #menu__item--one > div:hover, #menu__item--two > div:hover {
     background-color: #14a3f9;
+    cursor: pointer;
 }
 .menu__item span {
     display: inline-block;
@@ -122,6 +123,7 @@ header > div{
 .films__menu--item:hover{
     border: 1px solid #96b2cd;
     background-color: #96b2cd;
+    cursor: pointer;
 }
 .films__menu--search{
     justify-self: flex-end;
@@ -135,7 +137,7 @@ header > div{
 #films__list{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 .films__list--item{
     min-width: 120px;
@@ -161,6 +163,7 @@ header > div{
 }
 .films__list--item > img:hover{
     border: 1.5px solid gray;
+    cursor: pointer;
 }
 .films__list--star{
     display: flex;
@@ -176,6 +179,7 @@ header > div{
 .films__list--star > div:hover{
     font-size: 20pt;
     padding: 0%;
+    cursor: pointer;
 }
 footer > div{
     padding: 4px 6px 4px 6px;
@@ -215,7 +219,7 @@ footer > :last-child{
     position: relative;
     margin: 2% 5%;
     padding: 2% 5%;
-    left:35%;
+    left:15%;
     font-weight: bold;
     font-size: 11pt;
     border: #1e2536 solid 1px;
@@ -227,4 +231,16 @@ footer > :last-child{
     position: absolute;
     top: 2%;
     right: 2%;
+}
+button{
+    cursor: pointer;
+}
+input[type = "button"]{
+    cursor: pointer;
+}
+input[type = "reset"]{
+    cursor: pointer;
+}
+.close{
+    cursor: pointer;
 }
