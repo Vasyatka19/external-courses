@@ -1,11 +1,12 @@
-function Book(title,author,rating,image_url,cost,bookBuyCount){
+function Book(title,authorFirstName,authorLastName,rating,image_url,cost,bookBuyCount){
     this.title = title;
-    this.author = author;
+    this.author = {firstName: authorFirstName, lastName: authorLastName};
     this.rating = rating;
     this.image_url = image_url;
     this.bookBuyCount = bookBuyCount;
     this.cost = cost;
     this.id = Book.count + 1;
+    this.createdAt = Date.parse(new Date());
     Book.count += 1;
 }
 Book.count = 0;
@@ -17,7 +18,7 @@ Book.prototype.getElement = function(){
     div.setAttribute("class","films__list--item")
     div.innerHTML = '<img src="' + this.image_url + '" alt="1">\
         <div>' + this.title + '</div>\
-        <div>' + this.author + '</div>\
+        <div>' + this.author.firstName + " " + this.author.lastName + '</div>\
         <div class="films__list--star">' + getStars(this.rating,this.id) + '</div>'
     return div;
 
@@ -43,37 +44,59 @@ function BookScreen(allBooksList){
     this.bookList = this.allBooksList;
     console.log (this.bookList);
 }
-BookScreen.prototype.addBook = function(title,author,rating,image_url,cost,bookBuyCount){
-    this.allBooksList.push(new Book(title,author,rating,image_url,cost,bookBuyCount));
+BookScreen.prototype.addBook = function(title,authorFirstName,authorLastName,rating,image_url,cost,bookBuyCount){
+    this.allBooksList.push(new Book(title,authorFirstName,authorLastName,rating,image_url,cost,bookBuyCount));
     this.bookList = this.allBooksList;
 }
-BookScreen.prototype.filterBookList = function(paramName,criterial){
+BookScreen.prototype.filterBookList = function(callback){
     this.bookList = this.allBooksList.filter(function(el){
-        switch(paramName){
-            case "bookName": {return el.title.toLowerCase().includes(criterial.toLowerCase());}
-            case "bookRating": {return el.rating >= 4;}
-            case "bookBuyCount": {return el.bookBuyCount >= 4;}
-            case "bookPrice": {return el.cost === 0;}
-            default: {return true;}
-        }
+        return callback.call(this,el);
     }
     )
 }
 
 BookScreen.prototype.bookShow = function(){
     let filmTag = document.getElementById("films__list");
+    let history = document.getElementById('menu__item--history');
+    history.innerHTML = '';
     filmTag.innerHTML = '';
     for(let i =0;i<this.bookList.length;i++){
         filmTag.appendChild(this.bookList[i].getElement());
     } 
+
+    let sortedList = this.bookList
+    for(let i = 0; i < sortedList.length;i++){
+        for(let j = 0; j < sortedList.length - 1;j++){
+            if(sortedList[j].createdAt < sortedList[j+1].createdAt){
+                let min = sortedList[j];
+                sortedList[j] = sortedList[j+1];
+                sortedList[j+1] = min;
+            }
+        }
+    }
+    for(let i = 2;i>=0;i--){
+        let historyItem = document.createElement('div');
+        historyItem.innerHTML = '<div>🕘</div>\
+                                    <div>\
+                                        You added <span>' + sortedList[i].title + '</span>by <span>'
+                                            + sortedList[i].author.firstName + " " + sortedList[i].author.lastName + '</span>\
+                                        <div>' + calculationTime((Date.parse(new Date()) - sortedList[i].createdAt)) + '</div>\
+                                    </div>'
+        history.insertBefore(historyItem,history.firstChild);
+    } 
+
+    
 }
 
-makeRequest("https://rsu-library-api.herokuapp.com/books");
+makeRequest("https://rsu-library-api.herokuapp.com/books",createBookList);
+makeRequest("https://rsu-library-api.herokuapp.com/filters",createFilters);
+makeRequest("https://rsu-library-api.herokuapp.com/categories",createCategories);
 let BOOKSCREEN;
+
+
 function createBookList(response){
     BOOKSCREEN = new BookScreen(response);  
-   // window.onload = function() {
-        BOOKSCREEN.bookShow();
+    BOOKSCREEN.bookShow();
     
         let filmsList = document.getElementById('films__list');
         filmsList.onclick = function(event){
@@ -107,9 +130,7 @@ function createBookList(response){
 
         let addBookForm = document.forms['book__add'];
         let add = addBookForm.elements["add"];
-        //add.addEventListener('click',makeRequest.bind(null,"https://rsu-library-api.herokuapp.com/books"));
         add.addEventListener('click',addBookInList.bind(null,addBookForm));
-        //makeRequest
 
         addBookForm.onclick = function(event){
             let target = event.target;
@@ -121,7 +142,26 @@ function createBookList(response){
                 target = target.parentNode;
             }
         } 
-  //  }
+}
+
+function createFilters(response){
+    filmsMenu = document.getElementById('films__menu');
+    for(let i = response.length - 1; i>=0;i--){
+        let div = document.createElement('div');
+        div.setAttribute("id",response[i].id)
+        div.setAttribute("class","films__menu--item");
+        div.innerHTML = response[i].title;
+        filmsMenu.insertBefore(div,filmsMenu.firstChild);
+    }
+}
+
+function createCategories(response){
+    categoriesMenu = document.getElementById("menu__item--two");
+    for(let i = response.length - 1; i>=0;i--){
+        let div = document.createElement('div');
+        div.innerHTML = '<span>●</span>' + response[i].title;
+        categoriesMenu.appendChild(div);
+    }
 }
 
  function addFilter(el){
@@ -130,13 +170,19 @@ function createBookList(response){
         filters[i].style.backgroundColor = '#edf0f6';
     }
      el.style.backgroundColor = "#96b2cd";
-     BOOKSCREEN.filterBookList(el.getAttribute('name'));
+
+     switch(el.getAttribute("id")){
+         case "1": BOOKSCREEN.filterBookList(function(elem){return true;}); break;
+         case "2": BOOKSCREEN.filterBookList(function(elem){return elem.rating >= 4;}); break;
+         case "3": BOOKSCREEN.filterBookList(function(elem){return elem.bookBuyCount >= 4;}); break;
+         case "4": BOOKSCREEN.filterBookList(function(elem){return elem.cost === 0;}); break;
+     }
      BOOKSCREEN.bookShow();
  }
  function addSearch(el){
     let criterial = el.elements["search"].value;
     if(criterial!==null){
-        BOOKSCREEN.filterBookList('bookName',criterial);
+        BOOKSCREEN.filterBookList(function(elem){return elem.title.toLowerCase().includes(criterial.toLowerCase())});
         BOOKSCREEN.bookShow();
     }
  }
@@ -147,7 +193,8 @@ function createBookList(response){
  function addBookInList(form){
 
     let name = form.elements["name"].value;
-    let author = form.elements["author"].value;
+    let authorFirstName = form.elements["firstName"].value;
+    let authorLastName = form.elements["lastName"].value;
     let image = form.elements["image"].value;
     let price = parseInt(form.elements["price"].value);
     if(image === ""){
@@ -156,21 +203,14 @@ function createBookList(response){
      
      BOOKSCREEN.addBook(
         name,
-        author,
+        authorFirstName,
+        authorLastName,
         0,
         image,
         price,
         0
      )
-     let history = document.getElementById('menu__item--history');
-     let historyItem = document.createElement('div');
-     historyItem.innerHTML = '<div>🕘</div>\
-                                    <div>\
-                                        You added <span>' + form.elements["name"].value + '</span>by <span>'
-                                         + form.elements["author"].value + '</span> to your Must Read Titles\
-                                        <div>24 minutes ago</div>\
-                                    </div>'
-     history.insertBefore(historyItem,history.firstChild);
+
      form.style.display = 'none';
      form.reset();
      BOOKSCREEN.bookShow();
@@ -190,30 +230,51 @@ function createBookList(response){
  }
 
 
- function makeRequest(url) {
+ function makeRequest(url,callback) {
 	var httpRequest;
 
 	if (window.XMLHttpRequest) {
         httpRequest = new XMLHttpRequest();
-        httpRequest.responseType = 'json';
-	} 
+        try{
+            httpRequest.responseType = 'json';
+        }catch(e){ alert("dfh");}     
+	} else if (window.ActiveXObject) { // IE
+		try {
+			httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+		} 
+		catch (e) {
+			try {
+				httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+			} 
+			catch (e) {}
+		}
+	}
 
 	if (!httpRequest) {
 		alert('Giving up :( Cannot create an XMLHTTP instance');
 		return false;
     }
-	httpRequest.onreadystatechange = function() { loadContents(httpRequest); };
+	httpRequest.onreadystatechange = function() { loadContents(httpRequest,callback); };
 	httpRequest.open('GET', url, true);
     httpRequest.send('');
-    //return httpRequest.response;
 }
 
-function loadContents(httpRequest) {
+function loadContents(httpRequest,callback) {
 	if (httpRequest.readyState == 4) {
 		if (httpRequest.status == 200) {
-            createBookList(httpRequest.response);
+            callback.call(null,httpRequest.response);
 		} else {
 			alert('There was a problem with the request.');
 		}
 	}
+}
+function calculationTime(num){
+    switch(true){
+        case num > 31536000000 : {return Math.floor(num/31536000000) + " years ago";}
+        case num > 2592000000 : {return Math.floor(num/2592000000) + " months ago";}
+        case num > 604800000 : {return Math.floor(num/604800000) + " weeks ago";}
+        case num > 86400000 : {return Math.floor(num/86400000) + " days ago";}
+        case num > 3600000 : {return Math.floor(num/3600000) + " hours ago";}
+        default : {return Math.abs(Math.floor(num/60000)) + " minutes ago";}
+    }
 }

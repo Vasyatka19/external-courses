@@ -83,6 +83,7 @@ header > div{
 }
 #menu__item--history span{
     font-weight: bold;
+    text-transform: capitalize;
 }
 #menu__item--history > div{
     display: flex;
