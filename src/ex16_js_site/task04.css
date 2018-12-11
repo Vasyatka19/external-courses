@@ -233,6 +233,9 @@ footer > :last-child{
     top: 2%;
     right: 2%;
 }
+#book__add > label > input:active{
+    background-color: white;
+}
 button{
     cursor: pointer;
 }

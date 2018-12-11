@@ -41,6 +41,7 @@ function BookScreen(allBooksList){
     for (let i = 0; i <this.allBooksList.length; i++){
         this.allBooksList[i].__proto__ = Book.prototype;
     }
+    Book.count += this.allBooksList.length;
     this.bookList = this.allBooksList;
     console.log (this.bookList);
 }
@@ -64,7 +65,7 @@ BookScreen.prototype.bookShow = function(){
         filmTag.appendChild(this.bookList[i].getElement());
     } 
 
-    let sortedList = this.bookList
+    let sortedList = this.allBooksList.slice(0);
     for(let i = 0; i < sortedList.length;i++){
         for(let j = 0; j < sortedList.length - 1;j++){
             if(sortedList[j].createdAt < sortedList[j+1].createdAt){
@@ -187,33 +188,32 @@ function createCategories(response){
     }
  }
  function addBookFormVisible(){
-    document.getElementById('book__add').style.display = "block";
-
+    let forma = document.getElementById('book__add');
+    forma.style.display = "block";
  }
  function addBookInList(form){
 
-    let name = form.elements["name"].value;
-    let authorFirstName = form.elements["firstName"].value;
-    let authorLastName = form.elements["lastName"].value;
-    let image = form.elements["image"].value;
-    let price = parseInt(form.elements["price"].value);
-    if(image === ""){
-        image = "https://rsu-library-api.herokuapp.com/static/images/nocover.jpg";
-    } 
-     
-     BOOKSCREEN.addBook(
-        name,
-        authorFirstName,
-        authorLastName,
-        0,
-        image,
-        price,
-        0
-     )
+    let name = checkOnNull(form,"name",null);
+    let authorFirstName = checkOnNull(form,"firstName",null);
+    let authorLastName = checkOnNull(form,"lastName",null);
+    let image = checkOnNull(form,"image","https://rsu-library-api.herokuapp.com/static/images/nocover.jpg");
+    let price = parseInt(checkOnNull(form,"cost",0));
+    
+    if(name !== null && authorFirstName !== null && authorLastName !== null){
+        BOOKSCREEN.addBook(name, authorFirstName, authorLastName, 0,image,price,0)
+        form.style.display = 'none';
+        form.reset();
+        BOOKSCREEN.bookShow();
+    }
 
-     form.style.display = 'none';
-     form.reset();
-     BOOKSCREEN.bookShow();
+     function checkOnNull(el,fieldID,defaultValue){
+        if(el.elements['' + fieldID + ''].value===''){
+            if(defaultValue === null){
+                el.elements['' + fieldID + ''].style.backgroundColor = '#FFB6C1';
+            }
+            return defaultValue;
+        }else {return el.elements['' + fieldID + ''].value}
+     }
  }
  function addBookRating(el){
      let bookId = el.getAttribute('id');
