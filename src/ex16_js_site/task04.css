@@ -117,6 +117,7 @@ header > div{
     justify-content: flex-start;
 }
 .films__menu--item{
+    border: 1px solid #edf0f6;
     margin: 1%;
     padding: 1px 10px 1px 10px;
     border-radius: 20px;
@@ -162,8 +163,11 @@ header > div{
 .films__list--item > :nth-child(3){
     font-size: 12pt;
 }
+.films__list--item > img{
+    border: 1.5px solid white;
+}
 .films__list--item > img:hover{
-    border: 1.5px solid gray;
+    border-color: gray;
     cursor: pointer;
 }
 .films__list--star{
