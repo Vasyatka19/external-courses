@@ -3,7 +3,11 @@
     <head>
         <title>task_04</title>
         <meta charset="utf-8">
-        <script src="task04.js"></script>
+        <script src="src/controllers/bookController.js"></script>
+        <script src="src/models/BookModel.js"></script>
+        <script src="src/utils/makeRequest.js"></script>
+        <script src="src/views/bookView.js"></script>
+        <script src="src/app.js"></script>
         <link rel="stylesheet" href="task04.css">
         <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/symbola" type="text/css"/>
     </head>
@@ -72,19 +76,19 @@
                 <input type="reset" value="CLEAR">
             </form>
         </section>
-        <section id="films">
-            <div id="films__header">
+        <section id="books">
+            <div id="books__header">
                 <h3>browse available books</h3>
             </div>
-            <div id="films__menu"> 
-                <form id = "bookName" class="films__menu--item films__menu--search">
+            <div id="books__menu"> 
+                <form id = "bookName" class="books__menu--item books__menu--search">
                     <label>
                         <input id="search" type="search" placeholder="enter keywords">
                         🔎
                     </label>
                 </form>
             </div>
-            <div id="films__list">
+            <div id="books__list">
             </div>
         </section>
         <footer>

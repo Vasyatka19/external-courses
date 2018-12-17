@@ -1,5 +1,4 @@
-//CONTROLLER-------------------------
-export let BookController = function BookController(BOOKMODEL){
+let BookController = function BookController(BOOKMODEL){
     this.BOOKMODEL = BOOKMODEL;
 }
 
@@ -17,10 +16,10 @@ BookController.prototype.applySearch = function(criterial){
     });
 }
 BookController.prototype.addBook = function(title,authorFirstName,authorLastName,image,cost){
-    this.BOOKMODEL.addBook(title, authorFirstName, authorLastName, 0,image,cost,0);
+    this.BOOKMODEL.addBook(new Book(title,authorFirstName,authorLastName,0,image,cost,0));
 }
 BookController.prototype.addBookRating = function(ID,rating){
-    this.BOOKMODEL.allBooksList.find((elem) => {return elem.id === ID;}).setRating(rating);
+    this.BOOKMODEL.allBooksList.find(elem => elem.id === ID).setRating(rating);
 }
 BookController.prototype.getBookList = function(){
     return this.BOOKMODEL.bookList;

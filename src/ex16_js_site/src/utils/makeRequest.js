@@ -1,7 +1,4 @@
-export let State = function State(){
-
-}
-State.prototype.makeRequest = function makeRequest(url,callback) {
+let makeRequest = function makeRequest(url,callback) {
 	const httpRequest = new XMLHttpRequest();
 
 	if (!httpRequest) {

@@ -11,8 +11,6 @@ header, footer {
     align-content: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
-    /* -webkit-box-align: center; 
-    align-items: center; */
 }
 header > div{
     padding: 2px 4px 2px 4px;
@@ -36,7 +34,6 @@ header > div{
 }
 #menu{
     width: 20%;
-    /* min-width: 100px;  */
     font-family: Arial, Helvetica, sans-serif, SymbolaRegular;
     font-size: 14pt;
     color: white;
@@ -96,10 +93,10 @@ header > div{
 #menu__item--history > div :last-child{
     margin-top: 3%;
 }
-#films{
+#books{
     width: 80%;
 }
-#films__header, #films__menu{
+#books__header, #books__menu{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14pt;
     color: #2f364a;
@@ -107,41 +104,41 @@ header > div{
     background-color: #edf0f6;
     border-bottom: 1px solid #96b2cd;
 }
-#films__header{
+#books__header{
     padding: 1% 2% 1% 2%;
     font-size: 16pt;
 }
-#films__menu{
+#books__menu{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
-.films__menu--item{
+.books__menu--item{
     border: 1px solid #edf0f6;
     margin: 1%;
     padding: 1px 10px 1px 10px;
     border-radius: 20px;
 }
-.films__menu--item:hover{
+.books__menu--item:hover{
     border: 1px solid #96b2cd;
     background-color: #96b2cd;
     cursor: pointer;
 }
-.films__menu--search{
+.books__menu--search{
     justify-self: flex-end;
     background-color: white;
     margin-left: auto;
 }
-.films__menu--search input{
+.books__menu--search input{
     border: none;
     outline: none; 
 }
-#films__list{
+#books__list{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
-.films__list--item{
+.books__list--item{
     min-width: 120px;
     width: 17%;
     display: flex;
@@ -151,37 +148,37 @@ header > div{
     color: #2f364a;
     text-transform: capitalize;
 }
-.films__list--item > :nth-child(1){
+.books__list--item > :nth-child(1){
     display: block;
     width: 100%;
     height: 65%;
 }
-.films__list--item > :nth-child(2){
+.books__list--item > :nth-child(2){
     font-size: 14pt;
     font-weight: bold;
 }
-.films__list--item > :nth-child(3){
+.books__list--item > :nth-child(3){
     font-size: 12pt;
 }
-.films__list--item > img{
+.books__list--item > img{
     border: 1.5px solid white;
 }
-.films__list--item > img:hover{
+.books__list--item > img:hover{
     border-color: gray;
     cursor: pointer;
 }
-.films__list--star{
+.books__list--star{
     display: flex;
     justify-content: flex-start;
     justify-content: flex-start;
     color: orange;
     font-size: 15pt;
 }
-.films__list--star > div{
+.books__list--star > div{
     display: block;
     padding: 5% 0% 5% 0%;
 }
-.films__list--star > div:hover{
+.books__list--star > div:hover{
     font-size: 20pt;
     padding: 0%;
     cursor: pointer;
