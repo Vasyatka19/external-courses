@@ -114,26 +114,17 @@ BookView.prototype.addFilter = function(el){
     forma.style.display = "block";
  }
  BookView.prototype.addBookInList = function(form){
-    let title = checkOnNull(form,"name",null);
-    let authorFirstName = checkOnNull(form,"firstName",null);
-    let authorLastName = checkOnNull(form,"lastName",null);
-    let image = checkOnNull(form,"image","https://rsu-library-api.herokuapp.com/static/images/nocover.jpg");
-    let cost = parseInt(checkOnNull(form,"cost",0));
+    let title = this.checkOnNull(form,"name",null);
+    let authorFirstName = this.checkOnNull(form,"firstName",null);
+    let authorLastName = this.checkOnNull(form,"lastName",null);
+    let image = this.checkOnNull(form,"image","https://rsu-library-api.herokuapp.com/static/images/nocover.jpg");
+    let cost = parseInt(this.checkOnNull(form,"cost",0));
     
     if(title !== null && authorFirstName !== null && authorLastName !== null){
         this.BOOKCONTROLLER.addBook(title,authorFirstName,authorLastName,image,cost);
         form.style.display = 'none';
         form.reset();
         this.bookShow();
-    }
-
-    function checkOnNull(el,fieldID,defaultValue){
-        if(el.elements['' + fieldID + ''].value===''){
-            if(defaultValue === null){
-                el.elements['' + fieldID + ''].style.backgroundColor = '#FFB6C1';
-            }
-            return defaultValue;
-        }else {return el.elements['' + fieldID + ''].value}
     }
  }
  BookView.prototype.addBookRating = function(el){
@@ -156,4 +147,12 @@ BookView.prototype.addFilter = function(el){
         case num > 3600000 : {return Math.floor(num/3600000) + " hours ago";}
         default : {return Math.abs(Math.floor(num/60000)) + " minutes ago";}
     }
+}
+BookView.prototype.checkOnNull = function (el,fieldID,defaultValue){
+    if(el.elements['' + fieldID + ''].value===''){
+        if(defaultValue === null){
+            el.elements['' + fieldID + ''].style.backgroundColor = '#FFB6C1';
+        }
+        return defaultValue;
+    }else {return el.elements['' + fieldID + ''].value}
 }
