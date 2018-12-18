@@ -39,7 +39,7 @@ BookView.prototype.addListeners = function(){
 
     addBookForm.onclick = function(event){
         let target = event.target;
-         while(target != this){
+        while(target != this){
             if(target.getAttribute('class') == "close"){
                 thisObj.close(target.parentNode);
                 return;
@@ -51,13 +51,22 @@ BookView.prototype.addListeners = function(){
 
 
 BookView.prototype.bookShow = function(){
+    let thisObj = this;
     let filmTag = document.getElementById("books__list");
     let history = document.getElementById('menu__item--history');
     history.innerHTML = '';
     filmTag.innerHTML = '';
     this.BOOKCONTROLLER.getBookList().forEach(function(element) {
-        filmTag.appendChild(element.getElement());
-    })
+        var div = document.createElement('div');
+        div.setAttribute("class","books__list--item");
+        div.innerHTML = '<img src="' + element.image_url + '" alt="1">\
+                    <div>' + element.title + '</div>\
+                    <div>' + element.author.firstName + " " + element.author.lastName + '</div>\
+                    <div class="books__list--star">' + thisObj.getStars(element.rating,element.id) + '</div>';
+        filmTag.appendChild(div);
+    });
+
+
     let sortedList = this.BOOKCONTROLLER.getAllBooksList().slice(0);
     sortedList.sort((a,b) => b.createdAt - a.createdAt);
     for(let i = 2;i>=0;i--){
@@ -74,6 +83,17 @@ BookView.prototype.bookShow = function(){
                                     </div>'
         history.insertBefore(historyItem,history.firstChild);
     }
+}
+BookView.prototype.getStars = function (count,id){
+    let result = '';
+    for(let i = 1; i<=5;i++){
+        if(i <= count){
+            result += '<div id="' + id + "__" + i + '">★</div>';
+        } else{
+            result += '<div id="' + id + "__" + i + '">☆</div>';
+        }
+    }
+    return result;
 }
 BookView.prototype.createFilters = function (response){
     booksMenu = document.getElementById('books__menu');
@@ -149,10 +169,10 @@ BookView.prototype.addFilter = function(el){
     }
 }
 BookView.prototype.checkOnNull = function (el,fieldID,defaultValue){
-    if(el.elements['' + fieldID + ''].value===''){
+    if(el.elements[fieldID].value===''){
         if(defaultValue === null){
-            el.elements['' + fieldID + ''].style.backgroundColor = '#FFB6C1';
+            el.elements[fieldID].style.backgroundColor = '#FFB6C1';
         }
         return defaultValue;
-    }else {return el.elements['' + fieldID + ''].value}
+    }else {return el.elements[fieldID].value}
 }
