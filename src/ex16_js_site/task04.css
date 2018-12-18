@@ -1,0 +1,251 @@
+body{
+    display: flex;
+    flex-wrap: wrap;
+}
+header, footer {
+    width: 100%;
+    display: flex;
+    background-color: #2f364a;
+    color: white;
+    justify-content: flex-end;
+    align-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+}
+header > div{
+    padding: 2px 4px 2px 4px;
+    min-width: 80px;
+    top: 50%;
+    align-content: center;
+    -ms-flex-align: center;
+}
+#header__profile{
+    display: flex;
+    min-width: 120px;
+    justify-content: space-around;
+    -webkit-align-items: center;
+    background-color: #14a3f9;
+}
+#header__profile--photo{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    margin: 2px 4px 2px 4px;
+}
+#menu{
+    width: 20%;
+    font-family: Arial, Helvetica, sans-serif, SymbolaRegular;
+    font-size: 14pt;
+    color: white;
+    text-transform: capitalize;
+    background-color: #1e2536;
+}
+.menu__item{
+    border: 2px solid black;
+}
+.menu__item > div {
+    padding: 4.5% 0% 4.5% 3%;
+}
+#menu__item--one > div:hover, #menu__item--two > div:hover {
+    background-color: #14a3f9;
+    cursor: pointer;
+}
+.menu__item span {
+    display: inline-block;
+    margin-right: 3%;
+}
+#menu__item--two :nth-child(1) span{
+    color: rgb(221, 15, 84);
+}
+#menu__item--two :nth-child(2) span{
+    color: orange;
+}
+#menu__item--two :nth-child(3) span{
+    color: rgb(0, 217, 255);
+}
+#menu__item--two :nth-child(4) span{
+    color: rgb(172, 57, 172);
+}
+.menu__button--add{
+    margin: 15% 8% 15% 8%;
+    padding: 8% 2% 8% 2%;
+    width: 80%;
+    background-color: #f17859;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    font-size: 14pt;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#menu__item--history span{
+    font-weight: bold;
+    text-transform: capitalize;
+}
+#menu__item--history > div{
+    display: flex;
+    text-transform: none;
+    font-size: 12pt;
+}
+#menu__item--history > div :first-child{
+    margin-right: 3%;
+}
+#menu__item--history > div :last-child{
+    margin-top: 3%;
+}
+#books{
+    width: 80%;
+}
+#books__header, #books__menu{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+    color: #2f364a;
+    text-transform: capitalize;
+    background-color: #edf0f6;
+    border-bottom: 1px solid #96b2cd;
+}
+#books__header{
+    padding: 1% 2% 1% 2%;
+    font-size: 16pt;
+}
+#books__menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.books__menu--item{
+    border: 1px solid #edf0f6;
+    margin: 1%;
+    padding: 1px 10px 1px 10px;
+    border-radius: 20px;
+}
+.books__menu--item:hover{
+    border: 1px solid #96b2cd;
+    background-color: #96b2cd;
+    cursor: pointer;
+}
+.books__menu--search{
+    justify-self: flex-end;
+    background-color: white;
+    margin-left: auto;
+}
+.books__menu--search input{
+    border: none;
+    outline: none; 
+}
+#books__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.books__list--item{
+    min-width: 120px;
+    width: 17%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5% 1.5%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2f364a;
+    text-transform: capitalize;
+}
+.books__list--item > :nth-child(1){
+    display: block;
+    width: 100%;
+    height: 65%;
+}
+.books__list--item > :nth-child(2){
+    font-size: 14pt;
+    font-weight: bold;
+}
+.books__list--item > :nth-child(3){
+    font-size: 12pt;
+}
+.books__list--item > img{
+    border: 1.5px solid white;
+}
+.books__list--item > img:hover{
+    border-color: gray;
+    cursor: pointer;
+}
+.books__list--star{
+    display: flex;
+    justify-content: flex-start;
+    justify-content: flex-start;
+    color: orange;
+    font-size: 15pt;
+}
+.books__list--star > div{
+    display: block;
+    padding: 5% 0% 5% 0%;
+}
+.books__list--star > div:hover{
+    font-size: 20pt;
+    padding: 0%;
+    cursor: pointer;
+}
+footer > div{
+    padding: 4px 6px 4px 6px;
+    min-width: 20px;
+    top: 50%;
+    align-content: center;
+    -ms-flex-align: center;
+    text-align: center;
+}
+footer > :last-child{
+    background-color: #14a3f9;
+}
+#footer__quastion {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: white;
+    color: #1e2536;
+    font-weight: bold;
+}
+#book__add{
+    display: none;
+    position: fixed;
+    left: 21%;
+    top:10%;
+    background-color: #edf0f6;
+    padding: 3%;
+    border: 1px solid #2f364a;
+    border-radius: 10px;
+    color: #2f364a;
+}
+#book__add > label{
+    display: block;
+    margin: 5%;
+}
+#book__add > input{
+    position: relative;
+    margin: 2% 5%;
+    padding: 2% 5%;
+    left:15%;
+    font-weight: bold;
+    font-size: 11pt;
+    border: #1e2536 solid 1px;
+    border-radius: 10px;
+    background-color: #2f364a;
+    color: white;
+}
+#book__add > div{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+#book__add > label > input:active{
+    background-color: white;
+}
+button{
+    cursor: pointer;
+}
+input[type = "button"]{
+    cursor: pointer;
+}
+input[type = "reset"]{
+    cursor: pointer;
+}
+.close{
+    cursor: pointer;
+}

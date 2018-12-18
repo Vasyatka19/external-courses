@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>task_04</title>
+        <meta charset="utf-8">
+        <script src="src/controllers/bookController.js"></script>
+        <script src="src/models/BookModel.js"></script>
+        <script src="src/utils/makeRequest.js"></script>
+        <script src="src/views/bookView.js"></script>
+        <script src="src/app.js"></script>
+        <link rel="stylesheet" href="task04.css">
+        <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/symbola" type="text/css"/>
+    </head>
+    <body>
+        <header>
+            <div>Help center</div>
+            <div>Our Support</div>
+            <div id="header__profile">
+                <img id="header__profile--photo" src="http://cdn.shopify.com/s/files/1/0193/6253/products/harry_600x.png?v=1428269553" alt="Harry">
+                <div>Harry Potter</div>
+            </div>
+        </header>
+        <section id = "menu">
+            <div class="menu__item">
+                <button class="menu__button--add">+  add a book</button>
+            </div>
+            <div class="menu__item" id="menu__item--one">
+                <div>
+                    <span>📙</span>
+                     new reading
+                </div>
+                <div>
+                    <span>🌏</span>
+                     browse
+                </div>
+                <div>
+                    <span>🛒</span>
+                    buy books
+                </div>
+                <div>
+                    <span>★</span>
+                    favourite books
+                </div>
+                <div>
+                    <span>☰</span>
+                    wishlist
+                </div>
+                <div>
+                    <span>🕘</span>
+                    history
+                </div>
+            </div>
+            <div class="menu__item" id="menu__item--two">
+            </div>
+            <div class="menu__item" id="menu__item--history">
+            </div>
+            <form id="book__add">
+                <div class="close">❌</div>
+                <h3>add data about book, please:</h3>
+                <label>first name:
+                    <input id="firstName" required type="text">
+                </label>
+                <label>last name:
+                    <input id="lastName" type="text" required>
+                </label>
+                <label>name:  
+                    <input id="name" type="text" required>
+                </label>
+                <label>image:  
+                    <input id="image" type="text">
+                </label>
+                <label>price: 
+                    <input id="cost" type="number" required>
+                </label>
+                <input id="add" type="button" value="ADD">
+                <input type="reset" value="CLEAR">
+            </form>
+        </section>
+        <section id="books">
+            <div id="books__header">
+                <h3>browse available books</h3>
+            </div>
+            <div id="books__menu"> 
+                <form id = "bookName" class="books__menu--item books__menu--search">
+                    <label>
+                        <input id="search" type="search" placeholder="enter keywords">
+                        🔎
+                    </label>
+                </form>
+            </div>
+            <div id="books__list">
+            </div>
+        </section>
+        <footer>
+            <div>
+                <div id="footer__quastion">?</div>
+            </div>
+            <div>⚙</div>
+        </footer>
+    </body>
+</html>
