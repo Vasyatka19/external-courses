@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <title>HTML Basics</title>
+        <meta charset="utf-8">
+        <link href="task01.css" rel="stylesheet">
+        <style>
+            body{
+                font-family: Verdana, Arial, Helvetica, sans-serif; 
+                color: #333366;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>HTML Basics</h1>
+        <h2>Lists</h2>
+        <h3>Ordered list</h3>
+        <ol>
+            <li>first item</li>
+            <li>second item</li>
+            <li>third item</li>
+            <li>fourth item</li>
+            <li>fifth item</li>
+        </ol>
+        <h3>Unordered list</h3>
+        <ul>
+            <li>A</li>
+            <li>B</li>
+            <li>C</li>
+            <li>D</li>
+            <li>E</li>
+        </ul>
+        <div class="div-color5">
+            <h3>Description list</h3>
+            <dl>
+                <dt>Name</dt>
+                    <dd>Godzilla</dd>
+                <dt>Born</dt>
+                    <dd>1952</dd>
+                <dt>Birthplace</dt>
+                    <dd>Japan</dd>
+                <dt>Color</dt>
+                    <dd>Green</dd>
+            </dl>
+            <h3>Nested list</h3>
+            <ul>
+                <li>List item one</li>
+                <li>List item two with subelem
+                    <ul>
+                        <li>Subitem 1
+                            <ul>
+                                <li>Subsubitem 1</li>
+                                <li>Subsubitem 2</li>
+                            </ul>
+                        </li>
+                        <li>Subitem 2</li>
+                    </ul>
+                </li>
+                <li>Final list item</li>
+            </ul>
+        </div>
+        <h3>List with links</h3>
+        <ul>
+            <li><a href="https://github.com/Vasyatka19/external-courses">Home</a></li>
+            <li><a href="https://github.com/Vasyatka19/external-courses">News</a></li>
+            <li><a href="https://github.com/Vasyatka19/external-courses">Contact</a></li>
+            <li><a href="https://github.com/Vasyatka19/external-courses">About</a></li>
+        </ul>
+        <hr>
+        <h2>Paragraphs</h2>
+        <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. 
+            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. 
+            В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, 
+            используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без 
+            заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое 
+            время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, 
+            в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, 
+            в шаблонах которых используется Lorem Ipsum.</p>
+            <div class="paragraphs">
+                <p>
+                        Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, <br>
+                        но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э., <br>
+                        то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, <br>
+                        штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur", <br>
+                        и занялся его поисками в классической латинской литературе. <br>
+                        В результате он нашёл неоспоримый первоисточник Lorem Ipsum в разделах 1.10.32 и 1.10.33 книги <br>
+                        "de Finibus Bonorum et Malorum" ("О пределах добра и зла"), написанной Цицероном в 45 году н.э. <br>
+                        Этот трактат по теории этики был очень популярен в эпоху Возрождения. Первая строка Lorem Ipsum, <br>
+                        "Lorem ipsum dolor sit amet..", происходит от одной из строк в разделе 1.10.32
+                </p>
+            </div>
+        <hr>
+        <h2>Tables</h2>
+        <table>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                </tr>
+                <tr>
+                    <td>Jane</td>
+                    <td>Doe</td>
+                </tr>
+            </table>
+        <hr>
+        <h2>Image</h2>
+        <img class="crafty-cats" style="box-shadow: 0 0 0 2px black" src="7107.jpg" alt="craftyCat">
+        <hr>
+        <h2>Pre tag</h2>
+        <pre>
+                  *      *
+                * * *  * * *
+        *      *            *      * 
+            * *    *    *    * *
+         * * * *      *     * * * *
+                 *   * *  *
+                    *   *
+        </pre>
+    </body>
+</html>
